@@ -6,6 +6,7 @@
         <import>macros.xml</import>
     </macros>
     <requirements>
+        <requirement type="package" version="2.7">python</requirement>
         <requirement type="package" version="1.2">samtools</requirement>
         <requirement type="package" version="0.2.6">tabix</requirement>
         <requirement type="package" version="1.9">numpy</requirement>
@@ -20,11 +21,11 @@
 
     <command detect_errors="exit_code"><![CDATA[
         mkdir -p $output.extra_files_path;
-        
-        ## Dump the tool parameters into a JSON file 
-        python $json_file parameters.json;
 
-        python $__tool_directory__/jbrowseArchiveCreator.py --data_json parameters.json -o $output
+        ## Dump the tool parameters into a JSON file
+        python2 $json_file parameters.json;
+
+        python2 $__tool_directory__/jbrowseArchiveCreator.py --data_json parameters.json -o $output
     ]]></command>
     <configfiles>
         <configfile name="json_file">
@@ -54,7 +55,7 @@ file_path = sys.argv[1]
         #set array_inputs = []
         #silent $array_inputs.append($data_dict)
         #silent $data_parameter_dict.update({$datatype: $array_inputs})
-    #end if 
+    #end if
 #end def
 
 ## Get the number of digits from tracks, to have a unique integer from group index and track index
@@ -208,7 +209,7 @@ with open(file_path, 'w') as f:
                                 </valid>
                             </sanitizer>
                         </param>
-                    </when>     
+                    </when>
                     <when value="bed">
                         <conditional name="bedChoice">
                             <param name="bed_select" type="select" label="Bed Choice">

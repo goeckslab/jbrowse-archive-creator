@@ -18,7 +18,7 @@
 
     <package name="biopython" version="1.68">
         <readme>
-This package is based on package_biopython_1_67 owned by biopython. 
+This package is based on package_biopython_1_67 owned by biopython.
 https://toolshed.g2.bx.psu.edu/repository?user_id=fd5c6d0f82f315d8
 
 This Galaxy Tool Shed package installs Biopython from source, having
@@ -41,10 +41,10 @@ The PYTHONPATH for biopython can be accessed through PYTHONPATH_BIOPYTHON.
                 </action>
                 <action type="make_directory">$INSTALL_DIR/lib/python</action>
                 <action type="shell_command">
-                    export PYTHONPATH=$PYTHONPATH:$INSTALL_DIR/lib/python &amp;&amp; 
-                    export PATH=$PATH:$PATH_NUMPY &amp;&amp; 
-                    export PYTHONPATH=$PYTHONPATH:$PYTHONPATH_NUMPY &amp;&amp; 
-                    python setup.py install --install-lib $INSTALL_DIR/lib/python
+                    export PYTHONPATH=$PYTHONPATH:$INSTALL_DIR/lib/python &amp;&amp;
+                    export PATH=$PATH:$PATH_NUMPY &amp;&amp;
+                    export PYTHONPATH=$PYTHONPATH:$PYTHONPATH_NUMPY &amp;&amp;
+                    python2 setup.py install --install-lib $INSTALL_DIR/lib/python
                 </action>
                 <action type="set_environment">
                     <environment_variable action="append_to" name="PYTHONPATH">$INSTALL_DIR/lib/python</environment_variable>
@@ -66,9 +66,9 @@ The PYTHONPATH for biopython can be accessed through PYTHONPATH_BIOPYTHON.
                         export HOME=$INSTALL_DIR/jbrowse &amp;&amp; ./setup.sh
                     </action>
                     <action type="move_directory_files">
-                        <source_directory>.</source_directory>                       
+                        <source_directory>.</source_directory>
                         <destination_directory>$INSTALL_DIR/jbrowse</destination_directory>
-                    </action>    
+                    </action>
                     <action type="set_environment">
                         <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/jbrowse</environment_variable>
                         <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/jbrowse/bin</environment_variable>
