@@ -26,6 +26,8 @@ class CanvasFeatures(TrackDb):
         if self.dataType == 'gff':
             # need .gff3.gz extension to index the name of the track with generate-name.pl
             track['urlTemplate'] = os.path.join('tracks', self.trackName + '.gff3.gz')
+        elif self.dataType == 'bed':
+            track['storeClass'] = 'JBrowse/Store/SeqFeature/BEDTabix'
         else:
             track['urlTemplate'] = os.path.join('tracks', self.trackName)
         if 'glyph' in self.extraSettings:
@@ -40,4 +42,3 @@ class CanvasFeatures(TrackDb):
             #self.track["menuTemplate"] += [{"label" : "View details"}, {"label" : "Highlight this gene"}, self.extraSettings["menuTemplate"]]
         extraConfigs = track
         return extraConfigs
-
